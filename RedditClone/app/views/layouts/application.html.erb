@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedditClone</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+
+
+  <body>
+
+    <% if logged_in? %>
+      <%= current_user.username %>
+      <form action="<%= session_url %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" name="" value="Log out">
+      </form>
+      <% else %>
+        
+      <% end %>
+    <%flash[:errors] if flash[:errors]%>
+    <%= yield %>
+  </body>
+</html>

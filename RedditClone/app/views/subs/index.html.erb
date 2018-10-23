@@ -1,0 +1,27 @@
+
+<a href=" <%=new_sub_url%> ">Create a sub</a>
+
+<br/>
+
+<% @subs_from_user.each do |sub| %>
+  <li>
+    <a href=" <%=sub_url(sub)%>"><%=sub.title%></a>
+      <br/>
+    Description:   <%= sub.description %>
+  </li>
+
+  <form action="<%=edit_sub_url(sub)%>" method="get">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" name="" value="Edit Sub Forum">
+  </form>
+<% end %>
+
+<br/>
+
+<% @subs_not_from_user.each do |sub| %>
+  <li>
+    <a href=" <%=sub_url(sub)%>"><%=sub.title%></a>
+      <br/>
+    Description:   <%= sub.description %>
+  </li>
+<% end %>
